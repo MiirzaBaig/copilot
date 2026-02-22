@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#f2f2f5" stroke="#1a1a1a" stroke-width="3"/>
+  <!-- List lines (tasks) -->
+  <line x1="8" y1="9" x2="18" y2="9" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="8" y1="14" x2="16" y2="14" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="8" y1="19" x2="14" y2="19" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Glow-up star/spark -->
+  <path d="M22 10l1.5 3 3 .5-2 2 .5 3-3-1.5-3 1.5.5-3-2-2 3-.5z" fill="#f7e64a" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

@@ -25,8 +25,8 @@ export default function App() {
       </div>
       {hasRuntime && (
         <CopilotPopup
-          instructions="You are a task assistant. You have access to the user's current task list (use it when they ask what's on their list or to summarize). When the user gives you a new task to add, improve it and call the addImprovedTask action with the improved text. Do not reply in chat with the task—only call the action."
-          labels={{ title: 'Task glow-up', initial: 'Drop a task above — we’ll make it hit different.' }}
+          instructions="You are a task assistant. You have access to the user's task list (with optional priority and due). Single task: improve it and call addImprovedTask(improvedTaskText, priority?, due?). Notes or list: break into tasks and call addTasks([{ text, priority?, due? }, ...]). Do not reply in chat—only call the action(s)."
+          labels={{ title: 'Task glow-up', initial: 'Drop a task or paste notes — we’ll glow it up or break it into tasks.' }}
         />
       )}
     </CopilotKit>

@@ -95,4 +95,4 @@ This file makes your thought process as clear as possible — recruiters love st
 We’re doing something where:
 🔹 User input → AI suggestion → UI updated meaningfully
 🔹 CopilotKit manages agent interaction + shared state
-🔹 It feels like part of an actual app, not just a dummy chat.
+🔹 It feels like part of an actual app, not just a dummy chat.gst
