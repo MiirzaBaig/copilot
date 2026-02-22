@@ -1,0 +1,175 @@
+/* Neo brutalism theme + punchy Gen Z typography */
+:root {
+  --neo-bg: #f2f2f5;
+  --neo-surface: #ffffff;
+  --neo-border: #1a1a1a;
+  --neo-border-width: 4px;
+  --neo-shadow: 4px 4px 0 #1a1a1a;
+  --neo-accent: #f7e64a;
+  --neo-text: #1a1a1a;
+  --neo-text-muted: #5a5a5e;
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--neo-text);
+  background: var(--neo-bg);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Neo brutalism utility classes */
+.neo-card {
+  background: var(--neo-surface);
+  border: var(--neo-border-width) solid var(--neo-border);
+  border-radius: 6px;
+  box-shadow: var(--neo-shadow);
+}
+
+.neo-input {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--neo-text);
+  background: var(--neo-surface);
+  border: var(--neo-border-width) solid var(--neo-border);
+  border-radius: 6px;
+  box-shadow: var(--neo-shadow);
+  outline: none;
+}
+
+.neo-input::placeholder {
+  color: var(--neo-text-muted);
+}
+
+.neo-input:focus {
+  box-shadow: var(--neo-shadow), 0 0 0 2px var(--neo-accent);
+}
+
+.neo-input:disabled {
+  background: #e5e5e5;
+  cursor: not-allowed;
+}
+
+.neo-btn {
+  padding: 0.625rem 1rem;
+  min-width: 12rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neo-text);
+  background: var(--neo-accent);
+  border: var(--neo-border-width) solid var(--neo-border);
+  border-radius: 6px;
+  box-shadow: var(--neo-shadow);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+@keyframes neo-btn-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neo-btn-loading-text {
+  display: inline-block;
+  animation: neo-btn-fade-in-up 0.35s ease;
+}
+
+.neo-btn:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--neo-border);
+}
+
+.neo-btn:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.neo-btn:disabled {
+  background: #c4c4c4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.neo-banner {
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  background: var(--neo-accent);
+  border: var(--neo-border-width) solid var(--neo-border);
+  border-radius: 6px;
+  box-shadow: var(--neo-shadow);
+}
+
+.neo-banner code {
+  background: var(--neo-surface);
+  padding: 0.125rem 0.375rem;
+  border: 2px solid var(--neo-border);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.neo-banner a {
+  color: var(--neo-text);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.neo-page {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.neo-heading-1 {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--neo-text);
+  margin: 0 0 0.5rem 0;
+}
+
+.neo-heading-2 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neo-text);
+  margin: 0 0 0.5rem 0;
+}
+
+.neo-body {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--neo-text-muted);
+  margin: 0 0 1.5rem 0;
+}
+
+.neo-empty {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--neo-text-muted);
+}
