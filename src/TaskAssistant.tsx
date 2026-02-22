@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { useCopilotAction, useCopilotChat, useCopilotReadable } from '@copilotkit/react-core'
 import { TextMessage, Role } from '@copilotkit/runtime-client-gql'
 
-const COPILOT_INSTRUCTIONS = `You are a task assistant. When the user gives you a task, improve it to be clearer and more actionable (e.g. add a verb, make it specific, or break into a short sentence). Then call the addImprovedTask action with exactly one argument: improvedTaskText (the improved task string). Do not reply in chat with the task—only call the action.`
+const COPILOT_INSTRUCTIONS = `You are a task assistant. When the user gives you a task, improve it to be clearer and more actionable (e.g. add a verb, make it specific, or break into a short sentence). Your only response must be to call the addImprovedTask action with exactly one argument: improvedTaskText (the improved task string). Do not write or say anything in the chat—no visible reply. Only call the action; the task will appear in the user's list.`
 
 const LOADING_PHRASES = [
   'Glowing up…',
@@ -25,20 +25,22 @@ export function TaskAssistant() {
 
   const taskListForCopilot =
     tasks.length === 0 ? 'The list is empty.' : tasks.map((t, i) => `${i + 1}. ${t}`).join('\n')
+  const contextValue = String(taskListForCopilot ?? '')
 
   useCopilotReadable(
     {
       description:
         "The user's current task list. Each item is a task string. Use this when the user asks what's on their list, to summarize tasks, or to refer to tasks by position (e.g. first, second).",
-      value: taskListForCopilot,
-      convert: (_desc, v) => (typeof v === 'string' ? v : JSON.stringify(v)),
+      value: contextValue,
+      convert: (_desc, v) => (typeof v === 'string' ? v : JSON.stringify(v ?? '')),
     },
-    [taskListForCopilot]
+    [contextValue]
   )
 
   useCopilotAction({
     name: 'addImprovedTask',
-    description: "Add the user's task to their list after improving it. Call this with the improved task text only.",
+    description:
+      "Add the user's task to their list after improving it. Call this with the improved task text only. Do not also write the task in the chat—only call this action.",
     parameters: [
       {
         name: 'improvedTaskText',

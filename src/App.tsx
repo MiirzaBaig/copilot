@@ -2,18 +2,23 @@ import { CopilotKit } from '@copilotkit/react-core'
 import { CopilotPopup } from '@copilotkit/react-ui'
 import { TaskAssistant } from './TaskAssistant'
 
+// CopilotKit Cloud – set VITE_COPILOT_CLOUD_API_KEY in .env
 const publicApiKey = import.meta.env.VITE_COPILOT_CLOUD_API_KEY ?? ''
+// Self-hosted Gemini server (commented out in server/index.js when using Cloud)
+const runtimeUrl = import.meta.env.VITE_COPILOT_RUNTIME_URL ?? ''
 
 export default function App() {
-  const hasRuntime = !!publicApiKey
+  const hasRuntime = !!publicApiKey || !!runtimeUrl
 
   return (
-    <CopilotKit publicApiKey={hasRuntime ? publicApiKey : undefined}>
+    <CopilotKit
+      publicApiKey={publicApiKey || undefined}
+      runtimeUrl={runtimeUrl || undefined}
+    >
       <div className="neo-page">
         {!hasRuntime && (
           <p className="neo-banner" style={{ marginBottom: '1rem' }}>
-            Set <code>VITE_COPILOT_CLOUD_API_KEY</code> in <code>.env</code> and restart. Get a free key at{' '}
-            <a href="https://cloud.copilotkit.ai" target="_blank" rel="noreferrer">cloud.copilotkit.ai</a>.
+            Set <code>VITE_COPILOT_CLOUD_API_KEY</code> in <code>.env</code> for CopilotKit Cloud.
           </p>
         )}
         <TaskAssistant />

@@ -20,7 +20,9 @@ This demonstrates:
    npm install
    ```
 
-3. (Optional) Get a free [Copilot Cloud](https://cloud.copilotkit.ai) API key. Create a `.env` file and set `VITE_COPILOT_CLOUD_API_KEY` to your key (see `.env.example`). Do not commit `.env` or share your key.
+3. **Backend (pick one):**
+   - **Copilot Cloud:** Get a free key at [cloud.copilotkit.ai](https://cloud.copilotkit.ai). In `.env` set `VITE_COPILOT_CLOUD_API_KEY`. Do not commit `.env`.
+   - **Gemini (self-hosted):** In `.env` set `GOOGLE_GENERATIVE_AI_API_KEY` (Google AI API key) and `VITE_COPILOT_RUNTIME_URL=http://localhost:3001/api/copilotkit`. Then run the backend in a separate terminal: `npm run dev:server`, and keep it running.
 
 4. Run the app:
 
@@ -28,7 +30,7 @@ This demonstrates:
    npm run dev
    ```
 
-   Open the URL shown (e.g. http://localhost:5173).
+   Open the URL shown (e.g. http://localhost:5173). If using Gemini, ensure `npm run dev:server` is running so the app can reach the runtime.
 
 ## How it works
 
@@ -50,7 +52,7 @@ The in-app chat popup uses default CopilotKit styling; the main task UI uses a n
 
 ## Tools used
 
-- **CopilotKit** — React SDK (`@copilotkit/react-core`, `@copilotkit/react-ui`), Copilot Cloud for the backend.
+- **CopilotKit** — React SDK (`@copilotkit/react-core`, `@copilotkit/react-ui`); backend: Copilot Cloud or self-hosted runtime with **Gemini** (`@copilotkit/runtime`, Express).
 - **React** — UI and state.
 - **Vite** — dev server and build.
 
